@@ -29,6 +29,9 @@
     h2 {
       text-align: center;
     }
+    h3 {
+    	text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -162,43 +165,62 @@
       <td>XII.A2</td>
       <td>Mulyo Sari</td>
     </tr>
-  </table>
+  </table><hr>
+
+<h3>Jika ingin di tambahkan ke table, tolong isi ini yaa</h3>
+
+<form id="form">
   
-  <h2>Isi Untuk Menambahkan Nama mu</h2>
+  <label for="nama">Nama Lengkap:</label><br>
+  <input type="text" id="nama" name="nama" required><br><br>
 
-  <form action="proses.php" method="post">
-    
-    <label for="nama">Nama Lengkap:</label><br>
-    <input type="text" id="nama" name="nama" required><br><br>
+  <label for="umur">Umur:</label><br>
+  <input type="number" id="umur" name="umur" required><br><br>
 
-    <label for="umur">Umur:</label><br>
-    <input type="umur" id="umur" name="umur" required><br><br>
+  <label for="kelas">Kelas:</label><br>
+  <input type="text" id="kelas" name="kelas" required><br><br>
+  
+  <label for="alamat">Alamat:</label><br>
+  <input type="text" id="alamat" name="alamat" required><br><br>
 
-    <label for="kelas">Kelas:</label><br>
-    <input type="kelas" id="kelas" name="kelas" required><br><br>
-    	
-    <label for="alamat">Alamat:</label><br>
-    <input type="alamat" id="alamat" name="alamat" required><br><br>
+  <label>Jenis Kelamin:</label><br>
+  <input type="radio" id="pria" name="gender" value="Pria">
+  <label for="pria">Pria</label>
+  <input type="radio" id="wanita" name="gender" value="Wanita">
+  <label for="wanita">Wanita</label>
+  <input type="radio" id="waria" name="gender" value="Waria">
+  <label for="waria">Waria</label><br><br>
 
-    <label>Jenis Kelamin:</label><br>
-    <input type="radio" id="pria" name="gender" value="Pria">
-    <label for="pria">Pria</label>
-    <input type="radio" id="wanita" name="gender" value="Wanita">
-    <label for="wanita">Wanita</label><br><br>
+  <label for="mapel">Mapel Yang Disukai:</label><br>
+  <select id="mapel" name="mapel">
+    <option value="MATEMATIKA">MATEMATIKA</option>
+    <option value="IPA">Ilmu Pengetahuan Alam</option>
+    <option value="IPS">Ilmu Pengetahuan Sosial</option>
+  </select><br><br>
 
-    <label for="mapel">Mapel Yang Di Sukai:</label><br>
-    <select id="Mapel" name="Mapel">
-      <option value="MTK">MATEMATIKA</option>
-      <option value="IPA">Ilmu Pengetahuan Alam</option>
-      <option value="IPS">Ilmu Pengetahuan Sosial</option>
-    </select><br><br>
+  <label for="pesan">Pesan:</label><br>
+  <textarea id="pesan" name="pesan" rows="4" cols="30"></textarea><br><br>
 
-    <label for="pesan">Pesan:</label><br>
-    <textarea id="pesan" name="pesan" rows="4" cols="30"></textarea><br><br>
+  <button type="button" onclick="WA()">Kirim</button>
+  <button type="reset">Reset</button>
+</form>
 
-    <button type="submit">Kirim</button>
-    <button type="reset">Reset</button>
-  </form>
+<script>
+function WA() {
+  var nama = document.getElementById("nama").value;
+  var umur = document.getElementById("umur").value;
+  var kelas = document.getElementById("kelas").value;
+  var alamat = document.getElementById("alamat").value;
+  var gender = document.querySelector('input[name="gender"]:checked') ? document.querySelector('input[name="gender"]:checked').value : '';
+  var mapel = document.getElementById("mapel").value;
+  var pesan = document.getElementById("pesan").value;
+
+  var nomor = "6282280204824";
+  var teks = `Halo, saya ingin mengirim data:\n\nNama: ${nama}\nUmur: ${umur}\nKelas: ${kelas}\nAlamat: ${alamat}\nJenis Kelamin: ${gender}\nMapel Favorit: ${mapel}\nPesan: ${pesan}`;
+  var url = `https://wa.me/${nomor}?text=${encodeURIComponent(teks)}`;
+  window.open(url, '_blank');
+}
+</script>
 
 </body>
 </html>
